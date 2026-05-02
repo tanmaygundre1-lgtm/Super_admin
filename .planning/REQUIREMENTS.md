@@ -55,32 +55,32 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| ONB-01 | Unmapped | Pending |
-| ONB-02 | Unmapped | Pending |
-| SUB-01 | Unmapped | Pending |
-| SUB-02 | Unmapped | Pending |
-| SUB-03 | Unmapped | Pending |
-| SUB-04 | Unmapped | Pending |
-| API-01 | Unmapped | Pending |
-| API-02 | Unmapped | Pending |
-| API-03 | Unmapped | Pending |
-| API-04 | Unmapped | Pending |
-| API-05 | Unmapped | Pending |
-| API-06 | Unmapped | Pending |
-| FEND-01 | Unmapped | Pending |
-| FEND-02 | Unmapped | Pending |
-| FEND-03 | Unmapped | Pending |
-| FEND-04 | Unmapped | Pending |
-| FEND-05 | Unmapped | Pending |
-| FEND-06 | Unmapped | Pending |
-| FEND-07 | Unmapped | Pending |
-| GLB-01 | Unmapped | Pending |
-| GLB-02 | Unmapped | Pending |
+| ONB-01 | Phase 1 | Pending |
+| ONB-02 | Phase 1 | Pending |
+| SUB-01 | Phase 3 | Pending |
+| SUB-02 | Phase 3 | Pending |
+| SUB-03 | Phase 3 | Pending |
+| SUB-04 | Phase 3 | Pending |
+| API-01 | Phase 1 | Pending |
+| API-02 | Phase 1 | Pending |
+| API-03 | Phase 1 | Pending |
+| API-04 | Phase 1 | Pending |
+| API-05 | Phase 1 | Pending |
+| API-06 | Phase 3 | Pending |
+| FEND-01 | Phase 2 | Pending |
+| FEND-02 | Phase 2 | Pending |
+| FEND-03 | Phase 3 | Pending |
+| FEND-04 | Phase 2 | Pending |
+| FEND-05 | Phase 3 | Pending |
+| FEND-06 | Phase 2 | Pending |
+| FEND-07 | Phase 2 | Pending |
+| GLB-01 | Phase 4 | Pending |
+| GLB-02 | Phase 4 | Pending |
 
 **Coverage:**
 - v1 requirements: 21 total
-- Mapped to phases: 0
-- Unmapped: 21 ⚠️
+- Mapped to phases: 21
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-05-02*
