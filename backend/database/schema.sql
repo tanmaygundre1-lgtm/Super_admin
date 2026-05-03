@@ -34,7 +34,7 @@ DROP TABLE IF EXISTS academic_year CASCADE;
 DROP TABLE IF EXISTS school CASCADE;
 -- ============================================================================
 -- TABLE 1: SCHOOL (Tenant)
--- ============================================================================ 
+-- ============================================================================
 -- Stores information about each school in the multi-tenant system
 CREATE TABLE school (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -945,6 +945,24 @@ CREATE INDEX idx_app_user_role ON app_user (role);
 CREATE INDEX idx_app_user_email ON app_user (email);
 
 CREATE INDEX idx_app_user_status ON app_user (status);
+-- ============================================================================
+-- TABLE: SCHOOL_SUBSCRIPTION_RENEWAL
+-- ============================================================================
+-- Stores manual renewal and extension history for each school subscription
+CREATE TABLE school_subscription_renewal (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    school_id BIGINT NOT NULL REFERENCES school (id) ON DELETE CASCADE,
+    amount DECIMAL(12, 2),
+    currency VARCHAR(10) DEFAULT 'INR',
+    period_months INT NOT NULL CHECK (period_months > 0),
+    paid_on DATE NOT NULL DEFAULT CURRENT_DATE,
+    new_expiry_date DATE NOT NULL,
+    notes TEXT,
+    created_by VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_school_subscription_renewal_school_id ON school_subscription_renewal (school_id);
 -- ============================================================================
 -- TABLE: APPLICATION (Core Multi-Step Application Management)
 -- ============================================================================
@@ -2191,18 +2209,93 @@ CREATE TABLE service_provider_staff (
     full_name VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     password_hash TEXT NOT NULL,
-    internal_role VARCHAR(50) DEFAULT 'staff' CHECK (internal_role IN ('super_admin', 'support', 'billing')),
+    internal_role VARCHAR(50) DEFAULT 'staff' CHECK (
+        internal_role IN (
+            'super_admin',
+            'support',
+            'billing'
+        )
+    ),
     is_active BOOLEAN DEFAULT TRUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     last_login TIMESTAMP
 );
 
 -- Speed up login lookups for your internal team
-CREATE INDEX idx_sp_staff_email ON service_provider_staff(email);
+CREATE INDEX idx_sp_staff_email ON service_provider_staff (email);
 
 -- Placeholder for your first Super Admin account
-INSERT INTO service_provider_staff (full_name, email, password_hash, internal_role)
-VALUES ('Platform Owner', 'admin@your-saas-provider.com', '$2b$10$YourHashedPasswordExample', 'super_admin');
+INSERT INTO
+    service_provider_staff (
+        full_name,
+        email,
+        password_hash,
+        internal_role
+    )
+VALUES (
+        'Platform Owner',
+        'admin@your-saas-provider.com',
+        '$2b$10$YourHashedPasswordExample',
+        'super_admin'
+    );
+
+-- ============================================================================
+-- TABLE: SYSTEM_ANNOUNCEMENTS
+-- ============================================================================
+-- Global announcements displayed as banners on all school dashboards
+CREATE TABLE system_announcements (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    message TEXT NOT NULL,
+    is_active BOOLEAN DEFAULT true,
+    created_by INTEGER REFERENCES service_provider_staff (id),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_system_announcements_is_active ON system_announcements (is_active);
+
+CREATE INDEX idx_system_announcements_created_at ON system_announcements (created_at);
+
+-- ============================================================================
+-- TABLE: SUPPORT_TICKETS
+-- ============================================================================
+-- Support tickets submitted by school admins
+CREATE TABLE support_tickets (
+    id SERIAL PRIMARY KEY,
+    school_id INTEGER REFERENCES school (id),
+    submitted_by INTEGER REFERENCES app_user (id),
+    subject VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    status VARCHAR(50) DEFAULT 'open' CHECK (
+        status IN (
+            'open',
+            'in_progress',
+            'resolved',
+            'closed'
+        )
+    ),
+    priority VARCHAR(50) DEFAULT 'medium' CHECK (
+        priority IN (
+            'low',
+            'medium',
+            'high',
+            'urgent'
+        )
+    ),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    resolved_at TIMESTAMP,
+    assigned_to INTEGER REFERENCES service_provider_staff (id)
+);
+
+CREATE INDEX idx_support_tickets_school_id ON support_tickets (school_id);
+
+CREATE INDEX idx_support_tickets_status ON support_tickets (status);
+
+CREATE INDEX idx_support_tickets_priority ON support_tickets (priority);
+
+CREATE INDEX idx_support_tickets_created_at ON support_tickets (created_at);
 
 -- ============================================================================
 -- SQL Script ends

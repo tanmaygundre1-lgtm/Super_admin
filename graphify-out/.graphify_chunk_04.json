@@ -1,0 +1,342 @@
+{
+  "nodes": [
+    {
+      "id": "icons_sprite_root",
+      "label": "icons.svg Sprite Root",
+      "file_type": "document",
+      "source_file": "frontend/public/icons.svg",
+      "source_location": "L1:L24 root svg xmlns",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "symbol_bluesky_icon",
+      "label": "<symbol id=\"bluesky-icon\"> Bluesky Butterfly",
+      "file_type": "document",
+      "source_file": "frontend/public/icons.svg",
+      "source_location": "L2:L5 symbol#bluesky-icon viewBox=\"0 0 16 17\"",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "clip_bluesky_clip",
+      "label": "<clipPath id=\"bluesky-clip\"> Artboard Crop",
+      "file_type": "document",
+      "source_file": "frontend/public/icons.svg",
+      "source_location": "L4 defs clipPath#bluesky-clip",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "symbol_discord_icon",
+      "label": "<symbol id=\"discord-icon\"> Discord Mark",
+      "file_type": "document",
+      "source_file": "frontend/public/icons.svg",
+      "source_location": "L6:L8 symbol#discord-icon viewBox=\"0 0 20 19\"",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "symbol_documentation_icon",
+      "label": "<symbol id=\"documentation-icon\"> Open Book Code Brackets",
+      "file_type": "document",
+      "source_file": "frontend/public/icons.svg",
+      "source_location": "L9:L13 symbol#documentation-icon stroke #aa3bff",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "symbol_github_icon",
+      "label": "<symbol id=\"github-icon\"> GitHub Octocat Silhouette",
+      "file_type": "document",
+      "source_file": "frontend/public/icons.svg",
+      "source_location": "L14:L16 symbol#github-icon fill-rule=\"evenodd\"",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "symbol_social_icon",
+      "label": "<symbol id=\"social-icon\"> Person Badge Star Outline",
+      "file_type": "document",
+      "source_file": "frontend/public/icons.svg",
+      "source_location": "L17:L20 symbol#social-icon stroke #aa3bff",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "symbol_x_icon",
+      "label": "<symbol id=\"x-icon\"> X Bird-to-X Wordmark Paths",
+      "file_type": "document",
+      "source_file": "frontend/public/icons.svg",
+      "source_location": "L21:L23 symbol#x-icon fill-rule=\"evenodd\"",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "fill_color_near_black_brand_set",
+      "label": "Fill Palette #08060d (Discord/Bluesky/GitHub/X)",
+      "file_type": "document",
+      "source_file": "frontend/public/icons.svg",
+      "source_location": "path fill=\"#08060d\" across symbols",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "stroke_palette_accent_purple",
+      "label": "Stroke Palette #aa3bff (Documentation/Social)",
+      "file_type": "document",
+      "source_file": "frontend/public/icons.svg",
+      "source_location": "stroke=\"#aa3bff\" stroke-width=\"1.35\"",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "icons_sprite_root",
+      "target": "symbol_bluesky_icon",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/public/icons.svg",
+      "source_location": "child <symbol>",
+      "weight": 1.0
+    },
+    {
+      "source": "icons_sprite_root",
+      "target": "symbol_discord_icon",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/public/icons.svg",
+      "source_location": "child <symbol>",
+      "weight": 1.0
+    },
+    {
+      "source": "icons_sprite_root",
+      "target": "symbol_documentation_icon",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/public/icons.svg",
+      "source_location": "child <symbol>",
+      "weight": 1.0
+    },
+    {
+      "source": "icons_sprite_root",
+      "target": "symbol_github_icon",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/public/icons.svg",
+      "source_location": "child <symbol>",
+      "weight": 1.0
+    },
+    {
+      "source": "icons_sprite_root",
+      "target": "symbol_social_icon",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/public/icons.svg",
+      "source_location": "child <symbol>",
+      "weight": 1.0
+    },
+    {
+      "source": "icons_sprite_root",
+      "target": "symbol_x_icon",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/public/icons.svg",
+      "source_location": "child <symbol>",
+      "weight": 1.0
+    },
+    {
+      "source": "symbol_bluesky_icon",
+      "target": "clip_bluesky_clip",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/public/icons.svg",
+      "source_location": "g clip-path=\"url(#bluesky-clip)\"",
+      "weight": 1.0
+    },
+    {
+      "source": "symbol_bluesky_icon",
+      "target": "fill_color_near_black_brand_set",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/public/icons.svg",
+      "source_location": "path fill #08060d",
+      "weight": 1.0
+    },
+    {
+      "source": "symbol_discord_icon",
+      "target": "fill_color_near_black_brand_set",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/public/icons.svg",
+      "source_location": "path fill #08060d",
+      "weight": 1.0
+    },
+    {
+      "source": "symbol_github_icon",
+      "target": "fill_color_near_black_brand_set",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/public/icons.svg",
+      "source_location": "path fill #08060d",
+      "weight": 1.0
+    },
+    {
+      "source": "symbol_x_icon",
+      "target": "fill_color_near_black_brand_set",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/public/icons.svg",
+      "source_location": "path fill #08060d",
+      "weight": 1.0
+    },
+    {
+      "source": "symbol_documentation_icon",
+      "target": "stroke_palette_accent_purple",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/public/icons.svg",
+      "source_location": "stroke #aa3bff",
+      "weight": 1.0
+    },
+    {
+      "source": "symbol_social_icon",
+      "target": "stroke_palette_accent_purple",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/public/icons.svg",
+      "source_location": "stroke #aa3bff",
+      "weight": 1.0
+    },
+    {
+      "source": "symbol_documentation_icon",
+      "target": "symbol_social_icon",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.88,
+      "source_file": "frontend/public/icons.svg",
+      "source_location": "shared stroke specs linecap/join width",
+      "weight": 1.0
+    },
+    {
+      "source": "symbol_github_icon",
+      "target": "symbol_x_icon",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.72,
+      "source_file": "frontend/public/icons.svg",
+      "source_location": "fill-rule=\"evenodd\" solid dark paths",
+      "weight": 1.0
+    },
+    {
+      "source": "symbol_bluesky_icon",
+      "target": "symbol_discord_icon",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "frontend/public/icons.svg",
+      "source_location": "single-path mascots rounded geometry",
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "hyper_filled_near_black_external_brands",
+      "label": "External platform marks using solid fill #08060d",
+      "nodes": [
+        "symbol_bluesky_icon",
+        "symbol_discord_icon",
+        "symbol_github_icon",
+        "symbol_x_icon",
+        "fill_color_near_black_brand_set"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": "frontend/public/icons.svg"
+    },
+    {
+      "id": "hyper_purple_outline_product_ui_icons",
+      "label": "Product UI glyphs with twin-stroke violet styling",
+      "nodes": [
+        "symbol_documentation_icon",
+        "symbol_social_icon",
+        "stroke_palette_accent_purple"
+      ],
+      "relation": "form",
+      "confidence": "INFERRED",
+      "confidence_score": 0.82,
+      "source_file": "frontend/public/icons.svg"
+    },
+    {
+      "id": "hyper_clip_def_bluesky",
+      "label": "Scoped clipping stack for butterfly silhouette",
+      "nodes": [
+        "icons_sprite_root",
+        "symbol_bluesky_icon",
+        "clip_bluesky_clip"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/public/icons.svg"
+    }
+  ],
+  "input_tokens": 1258,
+  "output_tokens": 2869,
+  "vision_for_svg_graphic_semantics": {
+    "sprite_integration": "<svg xmlns> root holds six <symbol> fragments for <use href=\"/icons.svg#...\"> hydration in HTML/React without duplicating path data.",
+    "geometry_reading_order": [
+      "Bluesky uses grouped path under clip masking square viewport",
+      "Discord single filled path with recessed eye cavities",
+      "Documentation merges bracket/cover metaphors via thin strokes",
+      "GitHub uses even-odd silhouette with negative-space tentacle cutouts",
+      "Social overlays user circle plus rank-star badge glyphs",
+      "X reproduces rebranded angled bars with mirrored micro-path pairs"
+    ],
+    "color_semantics": {
+      "neutral_fill_mass": "#08060d conveys highest contrast monochrome brand compliance for Bluesky Discord GitHub X",
+      "accent_stroke_voice": "#aa3bff differentiates bespoke platform affordances Documentation Social from imported brand marks likely controlled by upstream guidelines"
+    },
+    "graphic_modality_signals": [
+      "Filled solid paths imply external trademark fidelity",
+      "Outlined strokes imply customizable UI primitives"
+    ],
+    "accessibility_and_scaling": "Distinct viewBoxes (16×17 … 21×20) imply per-icon intrinsic aspect ratios; callers must align CSS width/height to avoid uneven alignment in flex toolbars.",
+    "uncertainties": []
+  }
+}

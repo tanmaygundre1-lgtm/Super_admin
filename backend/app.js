@@ -4,11 +4,21 @@ require('dotenv').config();
 
 const app = express();
 
+const corsOrigins = process.env.CORS_ORIGIN
+  ? process.env.CORS_ORIGIN.split(',').map((origin) => origin.trim())
+  : ['http://localhost:5173', 'http://localhost:3000','http://127.0.0.1:5173'];
+
+const corsOptions = {
+  origin: ['http://localhost:5173', 'http://127.0.0.1:5173'], // Direct array dya
+  credentials: true,
+  methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Authorization', 'Content-Type'],
+  optionsSuccessStatus: 204
+};
+
 // Middleware
-app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
-  credentials: process.env.CORS_CREDENTIALS === 'true',
-}));
+app.use(cors(corsOptions));
+app.options('/api/super-admin/stats', cors(corsOptions), (req, res) => res.sendStatus(204));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -19,7 +29,15 @@ app.get('/api/health', (req, res) => {
 
 // Route registration
 const superAdminRoutes = require('./routes/superAdminRoutes');
+const schoolAuthRoutes = require('./routes/schoolAuthRoutes');
+const spAdminRoutes = require('./routes/spAdminRoutes');
+const publicRoutes = require('./routes/publicRoutes');
 app.use('/api/super-admin', superAdminRoutes);
+app.use('/api/school', schoolAuthRoutes);
+app.use('/api/sp-admin', spAdminRoutes);
+app.use('/api/public', publicRoutes);
+
+
 
 // Global error handler
 app.use((err, req, res, next) => {

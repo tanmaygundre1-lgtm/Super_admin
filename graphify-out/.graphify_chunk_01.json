@@ -1,0 +1,554 @@
+{
+  "nodes": [
+    {
+      "id": "file:detect_corpus.py",
+      "label": "graphify corpus detection script",
+      "file_type": "code",
+      "source_file": "detect_corpus.py",
+      "source_location": null,
+      "metadata": { "runtime": "python", "purpose": "run graphify.detect and write .graphify_detect.json" }
+    },
+    {
+      "id": "file:merge_graph.py",
+      "label": "AST and semantic extraction merge utility",
+      "file_type": "code",
+      "source_file": "merge_graph.py",
+      "source_location": null,
+      "metadata": { "inputs": [".graphify_ast.json"], "output": ".graphify_extract.json" }
+    },
+    {
+      "id": "file:backend/app.js",
+      "label": "Express application factory",
+      "file_type": "code",
+      "source_file": "backend/app.js",
+      "source_location": null,
+      "metadata": { "mounts": ["/api/super-admin", "/api/school", "/api/sp-admin", "/api/public"], "middleware": ["cors", "json"] }
+    },
+    {
+      "id": "file:backend/migrate-init.js",
+      "label": "migration script placeholder",
+      "file_type": "code",
+      "source_file": "backend/migrate-init.js",
+      "source_location": null,
+      "metadata": null
+    },
+    {
+      "id": "file:backend/server.js",
+      "label": "HTTP server bootstrap with DB readiness",
+      "file_type": "code",
+      "source_file": "backend/server.js",
+      "source_location": null,
+      "metadata": null
+    },
+    {
+      "id": "file:backend/config/db.js",
+      "label": "PostgreSQL connection pool",
+      "file_type": "code",
+      "source_file": "backend/config/db.js",
+      "source_location": null,
+      "metadata": { "driver": "pg" }
+    },
+    {
+      "id": "file:backend/controllers/schoolAuthController.js",
+      "label": "school scoped user login controller",
+      "file_type": "code",
+      "source_file": "backend/controllers/schoolAuthController.js",
+      "source_location": null,
+      "metadata": { "tables": ["app_user", "school"], "libraries": ["bcryptjs", "jsonwebtoken"], "risk": "syntax_corruption_near_bcrypt_compare" }
+    },
+    {
+      "id": "file:backend/controllers/spAdminController.js",
+      "label": "service provider internal staff signup",
+      "file_type": "code",
+      "source_file": "backend/controllers/spAdminController.js",
+      "source_location": null,
+      "metadata": { "tables": ["service_provider_staff"] }
+    },
+    {
+      "id": "file:backend/controllers/superAdminAuthController.js",
+      "label": "SP staff JWT login",
+      "file_type": "code",
+      "source_file": "backend/controllers/superAdminAuthController.js",
+      "source_location": null,
+      "metadata": { "tables": ["service_provider_staff"] }
+    },
+    {
+      "id": "file:backend/controllers/superAdminBillingController.js",
+      "label": "school subscription renewal and history",
+      "file_type": "code",
+      "source_file": "backend/controllers/superAdminBillingController.js",
+      "source_location": null,
+      "metadata": { "transactions": true, "tables": ["school", "school_subscription_renewal"] }
+    },
+    {
+      "id": "file:backend/controllers/superAdminGlobalController.js",
+      "label": "announcements and support tickets admin API",
+      "file_type": "code",
+      "source_file": "backend/controllers/superAdminGlobalController.js",
+      "source_location": null,
+      "metadata": { "tables": ["system_announcements", "support_tickets", "school", "app_user"], "auth_dependency_note": "createAnnouncement reads req.user" }
+    },
+    {
+      "id": "file:backend/controllers/superAdminSchoolController.js",
+      "label": "school CRUD, dashboard stats, admin provisioning",
+      "file_type": "code",
+      "source_file": "backend/controllers/superAdminSchoolController.js",
+      "source_location": null,
+      "metadata": { "tables": ["school", "student", "app_user"], "plans": ["trial", "basic", "pro", "ultimate"] }
+    },
+    {
+      "id": "file:backend/controllers/superAdminStaffController.js",
+      "label": "internal staff listing and creation",
+      "file_type": "code",
+      "source_file": "backend/controllers/superAdminStaffController.js",
+      "source_location": null,
+      "metadata": { "tables": ["service_provider_staff"], "roles": ["super_admin", "support", "billing"] }
+    },
+    {
+      "id": "file:backend/database/schema.sql",
+      "label": "PostgreSQL multi-tenant school CRM DDL",
+      "file_type": "document",
+      "source_file": "backend/database/schema.sql",
+      "source_location": null,
+      "metadata": { "domains": ["admissions", "fees", "saas_extensions", "communications"] }
+    },
+    {
+      "id": "file:backend/routes/publicRoutes.js",
+      "label": "public active announcements feed",
+      "file_type": "code",
+      "source_file": "backend/routes/publicRoutes.js",
+      "source_location": null,
+      "metadata": null
+    },
+    {
+      "id": "file:backend/routes/schoolAuthRoutes.js",
+      "label": "school authentication routes",
+      "file_type": "code",
+      "source_file": "backend/routes/schoolAuthRoutes.js",
+      "source_location": null,
+      "metadata": null
+    },
+    {
+      "id": "file:backend/routes/spAdminRoutes.js",
+      "label": "SP staff signup guarded by super admin",
+      "file_type": "code",
+      "source_file": "backend/routes/spAdminRoutes.js",
+      "source_location": null,
+      "metadata": null
+    },
+    {
+      "id": "file:backend/routes/superAdminRoutes.js",
+      "label": "super admin API router",
+      "file_type": "code",
+      "source_file": "backend/routes/superAdminRoutes.js",
+      "source_location": null,
+      "metadata": null
+    },
+    {
+      "id": "file:backend/src/middleware/verifyInternalStaff.js",
+      "label": "JWT verification for SP staff",
+      "file_type": "code",
+      "source_file": "backend/src/middleware/verifyInternalStaff.js",
+      "source_location": null,
+      "metadata": { "req_attachment": "staffUser", "secret": "SP_JWT_SECRET" }
+    },
+    {
+      "id": "file:backend/src/middleware/verifySchoolSubscription.js",
+      "label": "school subscription gate for school login",
+      "file_type": "code",
+      "source_file": "backend/src/middleware/verifySchoolSubscription.js",
+      "source_location": null,
+      "metadata": { "req_attachment": "schoolContext", "checks": ["is_active", "expiry_date"] }
+    },
+    {
+      "id": "file:backend/src/middleware/verifySuperAdmin.js",
+      "label": "super admin role guard wrapper",
+      "file_type": "code",
+      "source_file": "backend/src/middleware/verifySuperAdmin.js",
+      "source_location": null,
+      "metadata": null
+    },
+    {
+      "id": "file:frontend/eslint.config.js",
+      "label": "ESLint flat config for Vite React",
+      "file_type": "code",
+      "source_file": "frontend/eslint.config.js",
+      "source_location": null,
+      "metadata": { "extends": ["@eslint/js", "react-hooks", "react-refresh"] }
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:merge_graph.py",
+      "target": "file:detect_corpus.py",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "merge_graph.py",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server.js",
+      "target": "file:backend/app.js",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/server.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server.js",
+      "target": "file:backend/config/db.js",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/server.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/app.js",
+      "target": "file:backend/routes/superAdminRoutes.js",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/app.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/app.js",
+      "target": "file:backend/routes/schoolAuthRoutes.js",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/app.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/app.js",
+      "target": "file:backend/routes/spAdminRoutes.js",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/app.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/app.js",
+      "target": "file:backend/routes/publicRoutes.js",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/app.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/routes/superAdminRoutes.js",
+      "target": "file:backend/controllers/superAdminAuthController.js",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/routes/superAdminRoutes.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/routes/superAdminRoutes.js",
+      "target": "file:backend/controllers/superAdminSchoolController.js",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/routes/superAdminRoutes.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/routes/superAdminRoutes.js",
+      "target": "file:backend/controllers/superAdminStaffController.js",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/routes/superAdminRoutes.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/routes/superAdminRoutes.js",
+      "target": "file:backend/controllers/superAdminBillingController.js",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/routes/superAdminRoutes.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/routes/superAdminRoutes.js",
+      "target": "file:backend/controllers/superAdminGlobalController.js",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/routes/superAdminRoutes.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/routes/superAdminRoutes.js",
+      "target": "file:backend/src/middleware/verifyInternalStaff.js",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/routes/superAdminRoutes.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/routes/schoolAuthRoutes.js",
+      "target": "file:backend/src/middleware/verifySchoolSubscription.js",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/routes/schoolAuthRoutes.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/routes/schoolAuthRoutes.js",
+      "target": "file:backend/controllers/schoolAuthController.js",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/routes/schoolAuthRoutes.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/routes/spAdminRoutes.js",
+      "target": "file:backend/src/middleware/verifySuperAdmin.js",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/routes/spAdminRoutes.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/routes/spAdminRoutes.js",
+      "target": "file:backend/controllers/spAdminController.js",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/routes/spAdminRoutes.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/src/middleware/verifySuperAdmin.js",
+      "target": "file:backend/src/middleware/verifyInternalStaff.js",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/middleware/verifySuperAdmin.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/src/middleware/verifyInternalStaff.js",
+      "target": "file:backend/config/db.js",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/middleware/verifyInternalStaff.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/src/middleware/verifySchoolSubscription.js",
+      "target": "file:backend/config/db.js",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/middleware/verifySchoolSubscription.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/routes/publicRoutes.js",
+      "target": "file:backend/config/db.js",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/routes/publicRoutes.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/controllers/schoolAuthController.js",
+      "target": "file:backend/config/db.js",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/controllers/schoolAuthController.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/controllers/spAdminController.js",
+      "target": "file:backend/config/db.js",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/controllers/spAdminController.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/controllers/superAdminAuthController.js",
+      "target": "file:backend/config/db.js",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/controllers/superAdminAuthController.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/controllers/superAdminBillingController.js",
+      "target": "file:backend/config/db.js",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/controllers/superAdminBillingController.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/controllers/superAdminGlobalController.js",
+      "target": "file:backend/config/db.js",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/controllers/superAdminGlobalController.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/controllers/superAdminSchoolController.js",
+      "target": "file:backend/config/db.js",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/controllers/superAdminSchoolController.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/controllers/superAdminStaffController.js",
+      "target": "file:backend/config/db.js",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/controllers/superAdminStaffController.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/controllers/spAdminController.js",
+      "target": "file:backend/controllers/superAdminStaffController.js",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "backend/controllers/spAdminController.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/controllers/superAdminAuthController.js",
+      "target": "file:backend/controllers/schoolAuthController.js",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.72,
+      "source_file": "backend/controllers/superAdminAuthController.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/controllers/superAdminSchoolController.js",
+      "target": "file:backend/database/schema.sql",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.82,
+      "source_file": "backend/controllers/superAdminSchoolController.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/controllers/superAdminBillingController.js",
+      "target": "file:backend/database/schema.sql",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.82,
+      "source_file": "backend/controllers/superAdminBillingController.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/controllers/schoolAuthController.js",
+      "target": "file:backend/database/schema.sql",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.78,
+      "source_file": "backend/controllers/schoolAuthController.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/routes/publicRoutes.js",
+      "target": "file:backend/controllers/superAdminGlobalController.js",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.68,
+      "source_file": "backend/routes/publicRoutes.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/controllers/superAdminGlobalController.js",
+      "target": "file:backend/src/middleware/verifyInternalStaff.js",
+      "relation": "rationale_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "backend/controllers/superAdminGlobalController.js",
+      "weight": 1.0
+    },
+    {
+      "source": "file:detect_corpus.py",
+      "target": "file:merge_graph.py",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "detect_corpus.py",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/eslint.config.js",
+      "target": "file:backend/app.js",
+      "relation": "conceptually_related_to",
+      "confidence": "AMBIGUOUS",
+      "confidence_score": 0.2,
+      "source_file": "frontend/eslint.config.js",
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "h_super_admin_stack",
+      "label": "Protected super-admin surface",
+      "members": [
+        "file:backend/routes/superAdminRoutes.js",
+        "file:backend/src/middleware/verifyInternalStaff.js",
+        "file:backend/controllers/superAdminSchoolController.js",
+        "file:backend/controllers/superAdminBillingController.js",
+        "file:backend/controllers/superAdminGlobalController.js"
+      ],
+      "source_file": "backend/routes/superAdminRoutes.js",
+      "metadata": null
+    },
+    {
+      "id": "h_school_login_gate",
+      "label": "School login precondition chain",
+      "members": [
+        "file:backend/routes/schoolAuthRoutes.js",
+        "file:backend/src/middleware/verifySchoolSubscription.js",
+        "file:backend/controllers/schoolAuthController.js"
+      ],
+      "source_file": "backend/routes/schoolAuthRoutes.js",
+      "metadata": null
+    },
+    {
+      "id": "h_sp_staff_auth",
+      "label": "Service provider JWT identity column",
+      "members": [
+        "file:backend/controllers/superAdminAuthController.js",
+        "file:backend/src/middleware/verifyInternalStaff.js",
+        "file:backend/database/schema.sql"
+      ],
+      "source_file": "backend/controllers/superAdminAuthController.js",
+      "metadata": null
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}
